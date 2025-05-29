@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eden Cakes</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .cart-modal {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      z-index: 1000;
+      display: none;
+    }
+
+    .cart-modal ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart-modal li {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-modal button {
+      margin-top: 10px;
+      background-color: #ff6f61;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart-modal button:hover {
+      background-color: #e65c50;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart" onclick="toggleCartModal()">
+    🛒 Carrinho: <span id="cart-count">0</span> itens
+  </div>
+
+  <!-- Modal do carrinho -->
+  <div id="cart-modal" class="cart-modal">
+    <h3>Itens no Carrinho</h3>
+    <ul id="cart-items"></ul>
+    <button onclick="closeCart()">Fechar</button>
+  </div>
+
+  <header>
+    <div class="container header-container">
+      <div class="logo"><h1>Eden Cake's</h1></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="bolos.html">Bolos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Bem-vindo à Eden's Cake</h2>
+      <p>O sabor do paraíso em cada fatia.</p>
+    </div>
+  </section>
+
+  <section id="bolos" class="produtos">
+    <div class="container">
+      <h2>Nossos Bolos</h2>
+      <div class="grid">
+        <div class="produto">
+          <img src="https://th.bing.com/th/id/OIP.CspR4tp0SqD1LAYx9yqNNQHaGT?rs=1&pid=ImgDetMain" alt="Bolo Red Velvet" />
+          <h3>Red Velvet</h3>
+          <p>R$ 35,00</p>
+          <button onclick="addToCart('Red Velvet', 35)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+          <img src="https://http2.mlstatic.com/bolo-de-prestigio-delicioso-chocolate-com-coco-1kg-promoco-D_NQ_NP_897312-MLB26929676035_022018-F.jpg" alt="Bolo Prestígio" />
+          <h3>Prestígio</h3>
+          <p>R$ 32,00</p>
+          <button onclick="addToCart('Prestígio', 32)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+          <img src="https://th.bing.com/th/id/OIP.BWcsLaeQ6qZ371uINlntSgAAAA?cb=iwc2&rs=1&pid=ImgDetMain" alt="Bolo de Limão" />
+          <h3>Bolo de Limão</h3>
+          <p>R$ 28,00</p>
+          <button onclick="addToCart('Bolo de Limão', 28)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+          <img src="https://th.bing.com/th/id/OIP.H-k6FujiqCgKuTcF7e0E1QHaFT?rs=1&pid=ImgDetMain" alt="Bolo de Chocolate" />
+          <h3>Bolo de Chocolate</h3>
+          <p>R$ 30,00</p>
+          <button onclick="addToCart('Bolo de Chocolate', 30)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+          <img src="https://boloaniversario.com/wp-content/uploads/bolo-de-morango-aniversario.jpg" alt="Bolo de Morango" />
+          <h3>Bolo de Morango</h3>
+          <p>R$ 34,00</p>
+          <button onclick="addToCart('Bolo de Morango', 34)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto">
+          <img src="https://th.bing.com/th/id/OIP.fZrj7aYORSdPEpFEWpz66AHaE8?rs=1&pid=ImgDetMain" alt="Bolo de Cenoura" />
+          <h3>Bolo de Cenoura</h3>
+          <p>R$ 26,00</p>
+          <button onclick="addToCart('Bolo de Cenoura', 26)">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let cartItems = [];
+
+    function addToCart(productName, price) {
+      cartItems.push({ name: productName, price: price });
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      document.getElementById("cart-count").innerText = cartItems.length;
+      const cartList = document.getElementById("cart-items");
+      cartList.innerHTML = "";
+
+      cartItems.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.name} - R$ ${item.price.toFixed(2)}
+          <button onclick="removeFromCart(${index})" style="margin-left:10px; background:#c2185b;">Remover</button>
+        `;
+        cartList.appendChild(li);
+      });
+    }
+
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function toggleCartModal() {
+      const modal = document.getElementById("cart-modal");
+      modal.style.display = modal.style.display === "none" ? "block" : "none";
+    }
+
+    function closeCart() {
+      document.getElementById("cart-modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
