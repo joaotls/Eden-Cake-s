@@ -26,7 +26,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -39,6 +40,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -56,29 +58,98 @@ nav a {
   border: 1px solid #ccc;
   padding: 10px 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-weight: bold;
+  cursor: pointer;
 }
 
-/* Hero */
-.hero {
-  background: url('https://th.bing.com/th/id/OIP.VTZgfmHGWEF4_Kj9s8yy1gAAAA?rs=1&pid=ImgDetMain') no-repeat center center/cover;
-  height: 300px;
+.cart-modal {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.cart-modal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-modal li {
+  margin-bottom: 10px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.cart-modal button {
+  margin-top: 10px;
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cart-modal button:hover {
+  background-color: #e65c50;
+}
+
+/* Hero / Seções principais */
+.hero {
+  padding: 50px 20px;
+  background-color: #fff5f7;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .hero-content {
+  max-width: 800px;
+  text-align: center;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 20px 40px;
   border-radius: 10px;
-  text-align: center;
 }
 
 .hero h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
+}
+
+/* Seção de Depoimentos */
+.depoimentos {
+  margin-top: 30px;
+}
+
+.depoimento {
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.depoimento p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.depoimento h3 {
+  text-align: right;
+  font-weight: normal;
+  color: #555;
 }
 
 /* Produtos */
@@ -104,7 +175,7 @@ nav a {
   padding: 20px;
   border-radius: 10px;
   width: 280px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
 
@@ -216,49 +287,25 @@ footer {
     flex-direction: column;
     gap: 10px;
   }
-}
-.cart-modal {
-    position: fixed;
-    top: 70px;
-    right: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    max-height: 400px;
-    overflow-y: auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    z-index: 1000;
-  }
-  
-  .cart-modal ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .cart-modal li {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
   }
-  
-  .cart-modal button {
-    margin-top: 10px;
-    background-color: #ff6f61;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
+
+  .hero-content {
+    padding: 20px;
   }
-  
-  .cart-modal button:hover {
-    background-color: #e65c50;
-  }
-  
+
   .cart {
-    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
   }
-  
+
+  .cart-modal {
+    width: 90%;
+    right: 5%;
+  }
+}
