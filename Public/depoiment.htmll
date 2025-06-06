@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Depoimentos | Eden Cake's</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Eden Cake's</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="bolos.html">Bolos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobrenós.html">Sobre nós</a></li>
+          <li><a href="depoiment.html">Depoimentos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Depoimentos de Clientes</h1>
+        <p>Veja o que nossos clientes dizem sobre os deliciosos bolos da Eden Cake's!</p>
+
+        <div class="depoimentos">
+          <div class="depoimento">
+            <p>"Conheci a EdensCake recentemente e já virou minha loja favorita! Os bolos são simplesmente incríveis — massa fofinha, recheios deliciosos e tudo feito com muito capricho. Mas o que mais me surpreendeu foi o atendimento: super rápido, atencioso e com aquele cuidado que faz toda a diferença. Ah, e preciso comentar... o entregador, o Marcos, além de super atencioso, é um charme! 😄 EdensCake, vocês arrasam em tudo — nos sabores, no atendimento e até nas entregas!."</p>
+            <h3>— Mariana Silva</h3>
+          </div>
+
+          <div class="depoimento">
+            <p>"Ô meu povo, pense num bolo gostoso! EdensCake é bom demais, visse? Comprei um de leite ninho com morango e até hoje tô sonhando com ele. EdensCake, vocês arrasam no sabor e no carinho. Já virei cliente fiel! 🍓🎂"</p>
+            <h3>— Carlos Mendes</h3>
+          </div>
+
+          <div class="depoimento">
+            <p>"Achei que fosse só mais uma doceria... mas os bolos realmente têm um gosto único, parece mesmo do Jardim do Éden!"</p>
+            <h3>— Ana Paula Ferreira</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
